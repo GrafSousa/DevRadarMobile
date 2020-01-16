@@ -3,7 +3,7 @@ import { StyleSheet, Image, View, Text } from 'react-native';
 import MapView, { Marker, Callout } from 'react-native-maps';
 import { requestPermissionsAsync, getCurrentPositionAsync } from 'expo-location';
 
-function Main() {
+function Main({ navigation }) {
   const [currentRegion, setCurrentRegion] = useState(null);
 
   useEffect(() => {
@@ -38,7 +38,11 @@ function Main() {
           style={styles.avatar}
           source={{ uri: 'https://avatars3.githubusercontent.com/u/17460444?s=460&v=4' }}
         />
-        <Callout>
+        <Callout 
+          onPress={() => {
+            navigation.navigate('Profile', { github_username: 'grafsousa' });
+          }}
+        >
           <View style={styles.callout}>
             <Text style ={styles.devName}>Gustavo Graf de Sousa</Text>
             <Text style ={styles.devBio}>Bio</Text>
